@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+    <title>Quiz Game</title>
+</head>
+
+<body>
+    <nav>
+        <h1>Quiz Game</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="rules slide active">
+        <h1>Welcome to PokeQuiz</h1>
+        <div class="rules-list">
+            <ul>
+                <li>There will be 10 questions where you will be asked to guess the pokemon name from the image.</li>
+                <li>There are 4 options and only one option is correct.</li>
+                <li>Each question will have a timer of <span id="timer">10 seconds</span>.</li>
+                <li>Each correct answer will give <span id="positive">+4</span> points.</li>
+                <li>Each wrong answer will deduct <span id="negative">-1</span> points.</li>
+                <li>If times runs out and question is unanswered, it will result in <span id="unanswered">+0</span>
+                    points.</li>
+                <li>You'll get 3 lives and each incorrect answer will deduct 1 life</li>
+                <li>Scores will be displayed after the end of 10 questions.</li>
+            </ul>
+        </div>
+        <div class="start">
+                <input type="text" placeholder="Enter your name" id="username" name="username">
+                <button id="start-btn">Start the game</button>
+        </div>      
+    </div>
+    <div class="slide game">
+        <div class="game-box">
+            <h1>Guess the Pokemon!</h1>
+            <div class="box">
+                <div class="timer">
+                    <div class="base-circle">
+                        <div class="first-semi-circle"></div>
+                        <div class="second-semi-circle"></div>
+                        <div class="third-semi-circle"></div>
+                        <div class="top-circle"></div>
+                        <div class="time-left-text">
+                            <h2 class="questionNum"><span id="rem-time">10</span>1.</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-box">
+                    <img id="pokemon-img" alt="random pokemon">
+                    <div class="options">
+                        <div id="option-1" class="choices">
+                            <div class="option-circle">
+                                <h2>A. </h2>
+                            </div>
+                            <h3>Option 1</h3>
+                        </div>
+                        <div id="option-2" class="choices">
+                            <div class="option-circle">
+                                <h2>B. </h2>
+                            </div>
+                            <h3>Option 2</h3>
+                        </div>
+                        <div id="option-3" class="choices">
+                            <div class="option-circle">
+                                <h2>C. </h2>
+                            </div>
+                            <h3>Option 3</h3>
+                        </div>
+                        <div id="option-4" class="choices">
+                            <div class="option-circle">
+                                <h2>D. </h2>
+                            </div>
+                            <h3>Option 4</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button id="next-btn">Next Question</button>
+                    <button id="finish-btn">Finish Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide score">
+        <h1>Final Score</h1>
+        <div class="score-box">
+            <table border="1" id="score-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+                <!-- <tr>
+                    <td>Potato</td>
+                    <td>0</td>
+                </tr> -->
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
