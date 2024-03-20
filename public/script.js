@@ -196,7 +196,7 @@ finishBtn.addEventListener('click', () => {
         icon: "success",
         button: "OK!",
     }).then(() => {
-        window.location.href = "/"; // Replace "https://example.com" with the URL of the webpage you want to redirect to
+        window.location.href = "/leaderboard"; // Replace "https://example.com" with the URL of the webpage you want to redirect to
     });
 
     const scoreRow = document.querySelector(`.${username.value}-row`);
@@ -218,12 +218,12 @@ async function postData() {
         return;
       }
 
-      const response = await fetch('http://localhost:3000/api/storeData', {
+      const response = await fetch('http://localhost:3000/api/storescore', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ playerName:username.value, score:currentScore }),
+        body: JSON.stringify({ playerName: username.value, score: currentScore, type: 'pokemon' }),
       });
 
       if (!response.ok) {

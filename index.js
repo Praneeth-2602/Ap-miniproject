@@ -4,9 +4,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 import connectDB from './db/db.js';
 import cors from 'cors';
-
+import routes from './Routers/routes.js';
+import bodyParser from 'body-parser';
 
 const app = express();
+app.use(express.json())
 app.use(cors());
 
 const __dirname = process.cwd();
@@ -25,6 +27,15 @@ app.get('/pokemon', (_, res) => {
   res.sendFile(__dirname + '/public/pokemon.html');
 });
 
+app.get('/leaderboard', (_, res) => {
+  res.sendFile(__dirname + '/public/leaderboard.html');
+});
+
+app.use("/api",routes)
+
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define mongoose schema and models, handle routes, etc.
 

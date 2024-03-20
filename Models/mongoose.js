@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const scoreboardSchema = new mongoose.Schema({
   playerName: {
@@ -8,9 +8,15 @@ const scoreboardSchema = new mongoose.Schema({
   score: {
     type: Number,
     required: true
+  },
+  type: {
+    type: String,
+    required: true
   }
 });
 
 const Scoreboard = mongoose.model('Scoreboard', scoreboardSchema);
 
-export default Scoreboard;
+// ../Models/mongoose.js
+
+export { Scoreboard };

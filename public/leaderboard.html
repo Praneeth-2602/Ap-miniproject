@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    <nav>
+        <h1>Quiz Game</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <div class="leadoptions">
+        <div class="pokeleaderboard" id="pokeleaderboard" onclick="displayPokeScore()">Pokemon</div>
+        <div class="trivialeaderboard" id="trivialeaderboard" onclick="displayTriviaScore()">Trivia</div>
+    </div>
+    <div id="leaderboard"></div>
+    <script src="./script3.js"></script>
+</body>
+</html>
