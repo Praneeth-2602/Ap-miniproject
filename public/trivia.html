@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
     <title>Quiz Game</title>
 </head>
 
@@ -18,8 +19,28 @@
         </ul>
     </nav>
     <hr>
+
+    <div class="rules slide active" id="rules">
+        <h1>Welcome to Trivia Quiz</h1>
+        <div class="rules-list">
+            <ul>
+                <li>There will be 10 questions where you will be asked to guess the pokemon name from the image.</li>
+                <li>There are 4 options and only one option is correct.</li>
+                <li>Each correct answer will give <span id="positive">+1</span> points.</li>
+                <li>Each wrong answer will deduct <span id="negative">0</span> points.</li>
+                <li>Scores will be displayed after the end of 10 questions.</li>
+            </ul>
+        </div>
+        <div class="start">
+                <input type="text" placeholder="Enter your name" id="username" name="username">
+                <button id="start-btn">Start the game</button>
+        </div>      
+    </div>
     
     <div class="question-container" id="questionContainer">
+        <div class="question" id="quizquestion">
+
+        </div>
 
         <!-- Question will be inserted here using JavaScript -->
     </div>

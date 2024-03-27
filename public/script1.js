@@ -1,10 +1,23 @@
+
 let questionIndex = 0;
 let questions = [];
 let score = 0;
 const correctSound = new Audio('./audio/correct.mp3');
 const incorrectSound = new Audio('./audio/incorrect.mp3');
-const nextButton = document.getElementById('nextButton');
-const finishButton = document.getElementById('finishButton');
+const startButton = document.getElementById('start-btn');
+const rules = document.getElementById('rules');
+const questionContainer = document.getElementById('questionContainer');
+const username = document.getElementById('username');
+
+startButton.addEventListener('click', () => {
+  startButton.classList.add('hide');
+  rules.classList.remove('active');
+  rules.style.display = 'none';
+  questionContainer.classList.add('active');
+  questionContainer.style.display = 'block';
+  fetchQuestionsBatch().then(() => renderMultipleChoiceQuestion(questions[questionIndex]));
+});
+
 
 // Function to make an API request and fetch a batch of questions
 async function fetchQuestionsBatch() {
@@ -93,11 +106,33 @@ function renderMultipleChoiceQuestion(question) {
   nextButton.id = 'next-btn';
   nextButton.textContent = 'Next Question';
   buttonsContainer.appendChild(nextButton);
+  if(questionIndex === questions.length - 1) {
+    nextButton.style.display = 'none';
+  }
+  nextButton.addEventListener('click', () => {
+    if(questionIndex !== questions.length - 1) {
+    questionIndex += 1;
+    renderMultipleChoiceQuestion(questions[questionIndex]);
+    }
+  }); 
 
   const finishButton = document.createElement('button');
   finishButton.id = 'finish-btn';
   finishButton.textContent = 'Finish Quiz';
   buttonsContainer.appendChild(finishButton);
+
+  finishButton.addEventListener('click', () => {
+    currentScore = score;
+    postDataTrivia();
+    swal({
+      title: "Quiz Finished!",
+      text: `You scored ${score} out of ${questions.length}`,
+      icon: "success",
+      button: "OK",
+    }).then(() => {
+      window.location.href = '/leaderboard';
+    });
+  });
 
   questionContainer.appendChild(buttonsContainer);
 }
@@ -112,42 +147,37 @@ function shuffleOptions(array) {
 
 // Function to handle option click (customize this based on your needs)
 function handleOptionClick(selectedOption, correctAnswer) {
-  alert(selectedOption===correctAnswer? "Correct":"Incorrect");
-  // You can add more logic here, such as updating the score.
-    let options = document.querySelectorAll('.options-container button');
-    options.forEach(option => {
-        option.computedStyleMap.borderColor = 'red';
-    });
-    if (selectedOption === correctAnswer) {
-        score += 1;
-        correctSound.play();
-    }
-    else {
-        incorrectSound.play();
-    }
 
-  // Move to the next question
-  questionIndex += 1;
+  let optionz = document.querySelectorAll('.options h3');
+  let choicez = document.querySelectorAll('.choices');
+  let optionNumber = document.querySelectorAll('.option-circle h2');
+  for(let i = 0; i < optionz.length; i++) {
+    if(optionz[i].textContent === correctAnswer) {
+      optionz[i].style.borderColor = 'green';
+      optionz[i].style.color = 'green';
+      optionNumber[i].style.borderColor = 'green';
+      optionNumber[i].style.color = 'green';
+      choicez[i].style.borderColor = 'green';
+    }else{
+      optionz[i].style.borderColor = 'red';
+      optionz[i].style.color = 'red';
+      optionNumber[i].style.borderColor = 'red';
+      optionNumber[i].style.color = 'red';
+      choicez[i].style.borderColor = 'red';
+    }
+  }
 
-  // Check if there are more questions in the batch
-  if (questionIndex < questions.length) {
-    renderMultipleChoiceQuestion(questions[questionIndex]);
-  } else {
-    // Fetch a new batch of questions when the current batch is exhausted
-    fetchQuestionsBatch().then(() => {
-      questionIndex = 0;
-      renderMultipleChoiceQuestion(questions[questionIndex]);
-    });
+  if (selectedOption === correctAnswer) {
+    score += 1;
+    correctSound.play();
+  }
+  else {
+    incorrectSound.play();
   }
 }
 
-// Initial fetch of questions batch
-fetchQuestionsBatch().then(() => {
-  renderMultipleChoiceQuestion(questions[questionIndex]);
-});
-
-
-async function postData() {
+  // Move to the next question
+async function postDataTrivia() {
   try {
     // Ensure that username and currentScore are defined
     if (!username || !currentScore) {
@@ -155,12 +185,12 @@ async function postData() {
       return;
     }
 
-    const response = await fetch('http://localhost:3000/api/postscore', {
+    const response = await fetch('http://localhost:3000/api/storescore', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ playerName: username.value, score: currentScore, type: 'pokemon' }),
+      body: JSON.stringify({ playerName: username.value, score: currentScore, type: 'trivia' }),
     });
 
     if (!response.ok) {
