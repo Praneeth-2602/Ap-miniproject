@@ -8,6 +8,7 @@ const startButton = document.getElementById('start-btn');
 const rules = document.getElementById('rules');
 const questionContainer = document.getElementById('questionContainer');
 const username = document.getElementById('username');
+const body = document.querySelector('body');
 
 startButton.addEventListener('click', () => {
   startButton.classList.add('hide');
@@ -15,7 +16,30 @@ startButton.addEventListener('click', () => {
   rules.style.display = 'none';
   questionContainer.classList.add('active');
   questionContainer.style.display = 'block';
-  fetchQuestionsBatch().then(() => renderMultipleChoiceQuestion(questions[questionIndex]));
+  // Display loading animation
+  const loadingAnimation = document.createElement('div');
+  loadingAnimation.innerHTML = `
+    <div class="loader">
+      <div class="upper ball"></div>
+      <div class="right ball"></div>
+      <div class="lower ball"></div>
+      <div class="left ball"></div>
+    </div>
+  `;
+  body.appendChild(loadingAnimation);
+  questionContainer.style.display = 'none';
+  
+  // Fetch questions and render them
+  fetchQuestionsBatch()
+    .then(() => {
+      body.removeChild(loadingAnimation);
+      questionContainer.style.display = 'block';
+      renderMultipleChoiceQuestion(questions[questionIndex]);
+    })
+    .catch(error => {
+      body.removeChild(loadingAnimation);
+      console.error('Error fetching questions:', error);
+    });
 });
 
 

@@ -31,6 +31,14 @@ app.get('/leaderboard', (_, res) => {
   res.sendFile(__dirname + '/public/leaderboard.html');
 });
 
+app.get('/about', (_, res) => {
+  res.sendFile(__dirname + '/public/about.html');
+});
+
+app.get('/contact', (_, res) => {
+  res.sendFile(__dirname + '/public/contact.html');
+});
+
 app.use("/api",routes)
 
 app.use(bodyParser.json());
