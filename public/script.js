@@ -237,3 +237,17 @@ async function postData() {
     }
   }
   
+
+//   // Start time when the user begins the quiz
+// var startTime = new Date();
+
+// // End time when the user completes the quiz
+// var endTime = new Date();
+
+// // Calculate duration in milliseconds
+// var duration = endTime - startTime;
+
+// // Convert duration to seconds
+// var durationInSeconds = duration / 1000;
+
+// console.log("User spent " + durationInSeconds + " seconds on the quiz.");

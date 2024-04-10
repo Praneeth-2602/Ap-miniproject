@@ -2,11 +2,12 @@ body{
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background: #100721;
-    /* display: flex;
+    background: #EBE3D5;
+    display: flex;
     justify-content: center;
-    align-items: center; */
-    color: white;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
 }
 
 .game {
@@ -53,7 +54,7 @@ body{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border: 1px solid #1603c6;
+    border: 1px solid #FFFBF5;
     border-radius: 40px;
     width: 100%;
     margin: 10px;
@@ -67,8 +68,8 @@ body{
 .option-circle h2 {
     margin: 5px;
     padding: 10px;
-    border: 1px solid #1603c6;
-    color: #1603c6;
+    border: 1px solid #FFFBF5;
+    color: #FFFBF5;
     border-radius: 50%;
 }
 
@@ -76,7 +77,7 @@ body{
     margin-left: 60px;
     font-size: 20px;
     font-family: monospace;
-    color: #1603c6;
+    color: #FFFBF5;
 }
 
 .base-circle {
@@ -145,13 +146,13 @@ body{
     padding: 15px;
     border: none;
     color: #fff;
-    background-color: #1603c6;
+    background-color: #FFFBF5;
     font-size: 20px;
     cursor: pointer;
 }
 
 nav{
-    background: #100721;
+    background: transparent;
     color: white;
     padding: 0;
     text-align: center;
@@ -161,7 +162,7 @@ nav{
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 10000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -181,16 +182,21 @@ nav ul{
 nav li{
     list-style: none;
     display: inline;
-    padding: 3rem;
+    padding: 10px;
+}
+
+nav li:hover{
+    background-color: #FF8787;
+    color: #fff;
+    border-radius: 10px;
 }
 
 nav a{
     text-decoration: none;
-    color: white;
+    color: inherit;
 } 
 
 .container, .image-container{
-    background: #100721;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -269,7 +275,7 @@ nav a{
     height: 350px;
     width: 350px;
     justify-content: flex-end;
-    background: #02022e;
+    background: #EBE3D5;
     background: linear-gradient(0deg, rgba(2, 2, 46, 0.67550) 0%, rgba(255, 255, 255, 0) 100%);
     transform: translateY(-65%);
     transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
@@ -313,10 +319,10 @@ nav a{
 
 .rules{
     top: 5vh;
-    box-shadow: 1px 3px 15px #7645d8;
+    box-shadow: 1px 3px 15px #000;
     border-radius: 10px;
-    background: #02022e;
-    color: #fff;
+    background: #FFFBF5;
+    color: #333;
     height: 80vh;
     width: 90%;
     left: 10vh;
@@ -356,6 +362,7 @@ nav a{
     position: relative;
     opacity: 0;
     animation: up 1s 1s forwards;
+    text-align: left;
 }
 
 .rules .rules-list li{
@@ -388,6 +395,7 @@ nav a{
     font-size: 20px;
     position: relative;
     bottom: 5px;
+    border: 1px solid #333;
     border-radius: 15px;
     margin-top: 20px;
 }
@@ -395,8 +403,8 @@ nav a{
 .start button{
     padding: 15px;
     border: none;
-    color: #fff;
-    background-color: #1603c6;
+    color: #333;
+    background-color: #FF8787;
     font-size: 20px;
     cursor: pointer;
     position: relative;
@@ -404,6 +412,10 @@ nav a{
     border-radius: 15px;
     margin-top: 20px;
 
+}
+
+.start button:hover{
+    color: #fff;
 }
 
 .active{
@@ -415,7 +427,7 @@ nav a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #02022e;
+    background: #EBE3D5;
     color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -428,7 +440,7 @@ nav a{
     border-radius: 50%;
     height: 40px;
     width: 40px;
-    color: #02022e;
+    color: #EBE3D5;
     padding: 10px;
     text-align: center;
     display: flex;
@@ -480,8 +492,8 @@ nav a{
 #next-btn, #finish-btn{
     padding: 15px;
     border: none;
-    color: #fff;
-    background-color: #1603c6;
+    color: #333;
+    background-color: #FF8787;
     font-size: 20px;
     cursor: pointer;
     position: relative;
@@ -492,7 +504,7 @@ nav a{
 }
 
 #next-btn:hover, #finish-btn:hover{
-    background-color: #0e008a;
+    color: #fff;
 }
 
 .btns{
@@ -508,7 +520,7 @@ nav a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #02022e;
+    background: #EBE3D5;
     color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -541,7 +553,7 @@ nav a{
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 20px;
     justify-content: center;
@@ -567,14 +579,14 @@ nav a{
     padding: 15px;
     border: none;
     color: #fff;
-    background-color: #1603c6;
+    background-color: #FFFBF5;
     font-size: 20px;
     cursor: pointer;
     border-radius: 15px;    
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #1603c6;
+    border: 1px solid #FFFBF5;
     border-radius: 30px;
     margin: 10px;
     cursor: pointer;
@@ -638,6 +650,17 @@ tr:nth-child(even){
 .leadoptions .pokeleaderboard:hover, .leadoptions .trivialeaderboard:hover{
     background-color: white;
     color: #000;
+}
+
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    top: 50vh;
+    left: 100vh;
 }
 
 .loader .ball{
@@ -710,31 +733,374 @@ tr:nth-child(even){
     }
 }
 
-.card-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 20px;
-    position: relative;
-    top: 10vh;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
-.card {
-    width: 300px;
-    padding: 20px;
+.text-container {
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 96px;
+  font-weight: 800;
+  color: #fff;
+  opacity: 0.8;
+  user-select: none;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  --color-bg1: rgb(108, 0, 162);
+  --color-bg2: rgb(0, 17, 82);
+  --color1: 18, 113, 255;
+  --color2: 221, 74, 255;
+  --color3: 100, 220, 255;
+  --color4: 200, 50, 50;
+  --color5: 180, 180, 50;
+  --color-interactive: 140, 100, 255;
+  --circle-size: 80%;
+  --blending: hard-light;
+}
+
+.gradient-bg {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+  top: 0;
+  left: 0;
+
+  svg {
+    display: none;
+  }
+
+  .gradients-container {
+    filter: url(#goo) blur(40px);
+    width: 100%;
+    height: 100%;
+  }
+
+  .g1,
+  .g2,
+  .g3,
+  .g4,
+  .g5 {
+    position: absolute;
+    mix-blend-mode: var(--blending);
+  }
+
+  .g1 {
+    background: radial-gradient(
+        circle at center,
+        rgba(var(--color1), 0.8) 0,
+        rgba(var(--color1), 0) 50%
+      )
+      no-repeat;
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+
+    transform-origin: center center;
+    animation: moveVertical 30s ease infinite;
+
+    opacity: 1;
+  }
+
+  .g2 {
+    background: radial-gradient(
+        circle at center,
+        rgba(var(--color2), 0.8) 0,
+        rgba(var(--color2), 0) 50%
+      )
+      no-repeat;
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+
+    transform-origin: calc(50% - 400px);
+    animation: moveInCircle 20s reverse infinite;
+
+    opacity: 1;
+  }
+
+  .g3 {
+    background: radial-gradient(
+        circle at center,
+        rgba(var(--color3), 0.8) 0,
+        rgba(var(--color3), 0) 50%
+      )
+      no-repeat;
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2 + 200px);
+    left: calc(50% - var(--circle-size) / 2 - 500px);
+
+    transform-origin: calc(50% + 400px);
+    animation: moveInCircle 40s linear infinite;
+
+    opacity: 1;
+  }
+
+  .g4 {
+    background: radial-gradient(
+        circle at center,
+        rgba(var(--color4), 0.8) 0,
+        rgba(var(--color4), 0) 50%
+      )
+      no-repeat;
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+
+    transform-origin: calc(50% - 200px);
+    animation: moveHorizontal 40s ease infinite;
+
+    opacity: 0.7;
+  }
+
+  .g5 {
+    background: radial-gradient(
+        circle at center,
+        rgba(var(--color5), 0.8) 0,
+        rgba(var(--color5), 0) 50%
+      )
+      no-repeat;
+
+    width: calc(var(--circle-size) * 2);
+    height: calc(var(--circle-size) * 2);
+    top: calc(50% - var(--circle-size));
+    left: calc(50% - var(--circle-size));
+
+    transform-origin: calc(50% - 800px) calc(50% + 200px);
+    animation: moveInCircle 20s ease infinite;
+
+    opacity: 1;
+  }
+
+  .interactive {
+    position: absolute;
+    background: radial-gradient(
+        circle at center,
+        rgba(var(--color-interactive), 0.8) 0,
+        rgba(var(--color-interactive), 0) 50%
+      )
+      no-repeat;
+    mix-blend-mode: var(--blending);
+
+    width: 100%;
+    height: 100%;
+    top: -50%;
+    left: -50%;
+
+    opacity: 0.7;
+  }
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html,body{
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    place-items: center;
+    background: linear-gradient(to right, #99004D 0%, #ff0080 100%);
+}
+::selection{
+    background: #ff80bf;
+
+}*/
+.login-container{
+    background: #fff;
+    max-width: 350px;
+    width: 100%;
+    padding: 25px 30px;
     border-radius: 5px;
-    margin-bottom: 20px;
-    background: #02022e;
-    box-shadow: 1px 3px 15px #7645d8;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+    color: #333;
+    height: 350px;
+    place-items: center;
+}
+.login-container form .title{
+    font-size: 30px;
+    font-weight: 600px;
+    margin: 20px 0 10px 0;
+    position: relative;
+    color: #333;
+    text-align: left;
+    padding-bottom: 5px;
+}
+.login-container form .title:before{
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 33px;
+    left: 0px;
+    bottom: 3px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+}
+.login-container form .input-box{
+    width: 100%;
+    height: 45px;
+    margin-top: 25px;
+    position: relative;             
+}   
+
+.login-container form .input-box input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font-size: 16px;
+    border: none;                                                               
 }
 
-.card h2 {
-    margin-top: 0;
+.login-container form .underline::before{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #ccc;
+    left: 0;
+    bottom: 0;    
 }
 
-.card p {
-    margin-bottom: 0;
+.login-container form .underline::after{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(to right, #99004D 0%, #ff0080 100%);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.3s ease;
 }
 
+.login-container form .input-box input:focus ~ .underline::after,
+.login-container form .input-box input:valid ~ .underline::after{    
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.login-container form .button{
+    margin: 40px 0 20px 0;
+}
+.login-container .input-box input[type="submit"]{
+    background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+    font-size: 17px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.login-container .input-box input[type="submit"]:hover{
+    letter-spacing: 1px;
+    background: linear-gradient(to left, #99004d 0%, #ff0080 100%);
+}
+.login-container .option{
+    font-size: 14px;
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+.login-container .facebook a,
+.login-container .twitter a{
+  display: block;
+  height: 45px;
+  width: 100%;
+  font-size: 15px;
+  text-decoration: none;
+  padding-left: 20px;
+  line-height: 45px;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.login-container .facebook i,
+.login-container .twitter i{
+  padding-right: 12px;
+  font-size: 20px;
+}
+.login-container .twitter a{
+  background: linear-gradient(to right,  #00acee 0%, #1abeff 100%);
+  margin: 20px 0 15px 0;
+}
+.login-container .twitter a:hover{
+  background: linear-gradient(to left,  #00acee 0%, #1abeff 100%);
+  margin: 20px 0 15px 0;
+}
+.login-container .facebook a{
+  background: linear-gradient( to right,  #3b5998 0%, #476bb8 100%);
+  margin: 20px 0 50px 0;
+}
+.login-container .facebook a:hover{
+  background: linear-gradient( to left,  #3b5998 0%, #476bb8 100%);
+  margin: 20px 0 50px 0;
+} 
+
+.signup-container, .login-container{
+    position: absolute;
+    top: 30%;
+}

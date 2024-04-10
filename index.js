@@ -39,6 +39,14 @@ app.get('/contact', (_, res) => {
   res.sendFile(__dirname + '/public/contact.html');
 });
 
+app.get('/login', (_, res) => {
+  res.sendFile(__dirname + '/public/login.html');
+});
+
+app.get('/signup', (_, res) => {
+  res.sendFile(__dirname + '/public/signup.html');
+});
+
 app.use("/api",routes)
 
 app.use(bodyParser.json());

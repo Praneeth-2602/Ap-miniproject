@@ -15,7 +15,7 @@ startButton.addEventListener('click', () => {
   rules.classList.remove('active');
   rules.style.display = 'none';
   questionContainer.classList.add('active');
-  questionContainer.style.display = 'block';
+  questionContainer.style.display = 'none';
   // Display loading animation
   const loadingAnimation = document.createElement('div');
   loadingAnimation.innerHTML = `
@@ -27,13 +27,12 @@ startButton.addEventListener('click', () => {
     </div>
   `;
   body.appendChild(loadingAnimation);
-  questionContainer.style.display = 'none';
   
   // Fetch questions and render them
   fetchQuestionsBatch()
     .then(() => {
       body.removeChild(loadingAnimation);
-      questionContainer.style.display = 'block';
+      questionContainer.style.display = 'flex';
       renderMultipleChoiceQuestion(questions[questionIndex]);
     })
     .catch(error => {

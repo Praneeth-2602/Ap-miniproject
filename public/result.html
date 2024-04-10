@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .result-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-container p {
+            margin: 10px 0;
+        }
+
+        .result-container p strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Result</h1>
+
+    <div class="result-container">
+        <p><strong>Number of correct answers:</strong> <span id="correct-answers"></span></p>
+        <p><strong>Number of wrong answers:</strong> <span id="wrong-answers"></span></p>
+        <p><strong>Total number of attempted questions:</strong> <span id="total-questions"></span></p>
+    </div>
+
+</body>
+</html>
