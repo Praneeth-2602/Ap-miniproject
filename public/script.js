@@ -155,10 +155,10 @@ nextBtn.addEventListener('click', ()=> {
     allOptions.forEach((option, index) => {
         const h2Element = option.querySelector('h2');
         const h3Element = option.querySelector('h3');
-        option.style.border = '1px solid #1603c6';
-        h2Element.style.border = '1px solid #1603c6';
-        h2Element.style.color = '#1603c6';
-        h3Element.style.color = '#1603c6';
+        option.style.border = '1px solid #333';
+        h2Element.style.border = '1px solid #333';
+        h2Element.style.color = '#333';
+        h3Element.style.color = '#333';
     });
     const newPokemon = pokeFinder();
     const pokemonImg = document.querySelector('#pokemon-img').src = './images/Pokemon Dataset/' + pokemonNames[newPokemon] + '.png';

@@ -54,7 +54,7 @@ body{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border: 1px solid #FFFBF5;
+    border: 1px solid #333;
     border-radius: 40px;
     width: 100%;
     margin: 10px;
@@ -62,14 +62,14 @@ body{
 }
 
 #option-1:hover, #option-2:hover, #option-3:hover, #option-4:hover {
-    background-color: #e0e0e0;
+    background-color: #FF8787;
 }
 
 .option-circle h2 {
     margin: 5px;
     padding: 10px;
-    border: 1px solid #FFFBF5;
-    color: #FFFBF5;
+    border: 1px solid #333;
+    color: #333;
     border-radius: 50%;
 }
 
@@ -77,6 +77,10 @@ body{
     margin-left: 60px;
     font-size: 20px;
     font-family: monospace;
+    color: #333;
+}
+
+#option-1:hover h3, #option-2:hover h3, #option-3:hover h3, #option-4:hover h3, #option-1:hover h2, #option-2:hover h2, #option-3:hover h2, #option-4:hover h2{
     color: #FFFBF5;
 }
 
@@ -318,14 +322,14 @@ nav a{
 }
 
 .rules{
-    top: 5vh;
+    top: 10vh;
     box-shadow: 1px 3px 15px #000;
     border-radius: 10px;
     background: #FFFBF5;
     color: #333;
-    height: 80vh;
-    width: 90%;
-    left: 10vh;
+    height: 85vh;
+    width: 80%;
+    left: 5vh;
     margin-bottom: 100vh;
 }
 
@@ -373,10 +377,11 @@ nav a{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     position: relative;
     opacity: 0;
     animation: fadeIn 1s 2s forwards;
+    gap: 20px;
 }
 
 @keyframes fadeIn {
