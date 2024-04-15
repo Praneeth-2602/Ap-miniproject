@@ -10,14 +10,16 @@
 </head>
 
 <body>
-    <nav style="color: #333;">
+    <nav>
         <h1>Quiz Game</h1>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li>
+            <li id="leaderboard"><a href="/leaderboard">Leaderboard</a></li>
+            <li id="login"><a href="/login">Login</a></li>
+            <li id="signup"><a href="/signup">Signup</a></li>
+            <li id="signout"><a href="/signout">SignOut</a></li>
         </ul>
     </nav>
     <div class="rules slide active">
@@ -107,6 +109,29 @@
         </div>
     </div>
 
+    <div class="result-container slide">
+        <p><strong>Time taken:</strong> <span id="time-taken"></span></p>     
+        <p><strong>Total number of attempted questions:</strong> <span id="total-questions"></span></p>
+        <div class="progress">
+            <div class="progress-bar-q progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+        <p><strong>Number of correct answers:</strong> <span id="correct-answers"></span></p>
+        <div class="progress">
+            <div class="progress-bar-c progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+        <p><strong>Number of wrong answers:</strong> <span id="wrong-answers"></span></p>
+        <div class="progress">
+            <div class="progress-bar-w progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script5.js"></script>
     <script src="script.js"></script>
 </body>
 

@@ -12,6 +12,7 @@ const remTime = document.querySelector('#rem-time');
 let currentScore = 0;
 let correctAnswertoPokemon;
 let questionNum = 1;
+let correctAnswerh = 0;
 const User = localStorage.getItem('username');
 
 let tempStorage =[];
@@ -31,16 +32,18 @@ function delayedFunction(startTime) {
         const elapsedTimeInSeconds = Math.floor((new Date().getTime() - startTime) / 1000);
         const remainingTimeInSeconds = 10 - elapsedTimeInSeconds;
         const remTime = document.querySelector('#rem-time');
-        remTime.innerHTML = remainingTimeInSeconds;
-        if(remainingTimeInSeconds === 0) {
-            let incorrectTrigger = (correctAnswertoPokemon === 4) ? 1 : correctAnswertoPokemon+1;
-            allOptions[incorrectTrigger-1].click();
-            currentScore += 1;
-            const updatedScore = document.querySelector(`.${User}-score`);
-            updatedScore.textContent = `${currentScore}`;
-        }
-        if (elapsedTimeInSeconds < 10) {
-            setTimeout(() => delayedFunction(startTime), 1000);
+        if (remTime) {
+            remTime.innerHTML = remainingTimeInSeconds;
+            if (remainingTimeInSeconds === 0) {
+                let incorrectTrigger = (correctAnswertoPokemon === 4) ? 1 : correctAnswertoPokemon + 1;
+                allOptions[incorrectTrigger - 1].click();
+                currentScore += 1;
+                const updatedScore = document.querySelector(`.${User}-score`);
+                updatedScore.textContent = `${currentScore}`;
+            }
+            if (elapsedTimeInSeconds < 10) {
+                setTimeout(() => delayedFunction(startTime), 1000);
+            }
         }
     }
 }
@@ -130,6 +133,7 @@ optionsParentDiv.addEventListener('click', (e)=> {
         if(clickedChoice.classList.contains('correct-option')) {
             correctSound.play();
             currentScore += 4;
+            correctAnswerh++;
             const updatedScore = document.querySelector(`.${User}-score`);
             updatedScore.textContent = `${currentScore}`;
         }
@@ -196,7 +200,7 @@ finishBtn.addEventListener('click', () => {
         icon: "success",
         button: "OK!",
     }).then(() => {
-        window.location.href = "/leaderboard"; // Replace "https://example.com" with the URL of the webpage you want to redirect to
+        displayResult();
     });
 
     const scoreRow = document.querySelector(`.${User}-row`);
@@ -205,7 +209,6 @@ finishBtn.addEventListener('click', () => {
     const updatedScore = document.querySelector(`.${User}-score`);
     updatedScore.textContent = `${currentScore}`;
     tempStorage = [];
-    questionNum = 1;
     postData();
 });
 
@@ -213,7 +216,7 @@ finishBtn.addEventListener('click', () => {
 async function postData() {
     try {
       // Ensure that username and currentScore are defined
-      if (!User || !currentScore) {
+      if (!currentScore) {
         console.error('Error: username and currentScore are required.');
         return;
       }
@@ -238,16 +241,43 @@ async function postData() {
   }
   
 
-//   // Start time when the user begins the quiz
-// var startTime = new Date();
+  // Start time when the user begins the quiz
+var startTime = new Date();
 
-// // End time when the user completes the quiz
-// var endTime = new Date();
+// End time when the user completes the quiz
+var endTime = new Date();
 
-// // Calculate duration in milliseconds
-// var duration = endTime - startTime;
+// Calculate duration in milliseconds
+var duration = endTime - startTime;
 
-// // Convert duration to seconds
-// var durationInSeconds = duration / 1000;
+// Convert duration to seconds
+var durationInSeconds = duration / 1000;
 
-// console.log("User spent " + durationInSeconds + " seconds on the quiz.");
+console.log("User spent " + durationInSeconds + " seconds on the quiz.");
+
+function displayResult() {
+    gameDiv.classList.remove('active');
+    document.querySelector('.result-container').classList.add('active');
+    const timetaken = document.getElementById('time-taken');
+    timetaken.textContent = `${duration} seconds`;
+    const totalQuestions = document.getElementById('total-questions');
+    totalQuestions.textContent = `${questionNum}`;
+    const correctAnswershh = document.getElementById('correct-answers');
+    correctAnswershh.textContent = `${correctAnswerh}`;
+    const wrongAnswershh = document.getElementById('wrong-answers');
+    wrongAnswershh.textContent = `${questionNum - correctAnswerh}`;
+
+    const percentage = (questionNum / questionNum) * 100;
+    const correctPercentage = (correctAnswerh / questionNum) * 100;
+    let wrongAnswerh = questionNum - correctAnswerh;
+    const wrongPercentage = (wrongAnswerh / questionNum) * 100;
+  
+    const progressbarq = document.querySelector('.progress-bar-q');
+    const progressbarc = document.querySelector('.progress-bar-c');
+    const progressbarw = document.querySelector('.progress-bar-w');
+  
+    progressbarq.style.width = `${percentage}%`;
+    progressbarc.style.width = `${correctPercentage}%`;
+    progressbarw.style.width = `${wrongPercentage}%`;
+    
+}

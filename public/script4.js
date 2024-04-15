@@ -53,27 +53,42 @@ async function verifyLoginCredentials(username, password){
 
         const data = await response.json();
         console.log(data);
+        if(data.success){
+            isLoggedIn = true;
+            console.log('Login successful');
+        }else{
+            console.log('Incorrect username or password');
+        }
     } catch (error) {
         console.error('Error:', error);
     }
-}
 
-function handleSignup() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    if (!username || !password) {
-        console.error('Error: username and password are required.');
-        return;
+    if(isLoggedIn){
+      localStorage.setItem('username', username);
+      localStorage.setItem('isLoggedIn', true);
+      window.location.href = '/';
     }
-    console.log(username, password);
-
-    sendCredentials(username, password).then(() => {
-      window.location.href = '/login';
-    });
 }
 
-function handleLogin() {
+async function handleSignup(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  const username = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('passkey').value;
+
+  if (!username || !email || !password) {
+    console.error('Error: username, email, and password are required.');
+    return;
+  }
+  sendCredentials(username, password);
+}
+
+let isLoggedIn = false;
+
+async function handleLogin(event) {
+  event.preventDefault(); // Prevent form submission
+  
   const username = document.getElementById('name').value;
   const password = document.getElementById('passkey').value;
 
@@ -81,15 +96,6 @@ function handleLogin() {
     console.error('Error: username and password are required.');
     return;
   }
-  console.log(username, password);
 
-  verifyLoginCredentials(username, password)
-    .then(() => {
-      // Store username and password in local storage
-      localStorage.setItem('username', username);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+  verifyLoginCredentials(username, password);
 }
-

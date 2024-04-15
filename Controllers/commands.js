@@ -73,4 +73,7 @@ async function verifyLogin(req, res) {
     }
 }
 
+
+
+
 export { storeScore, displayPokeScore, displayTriviaScore, createUser, verifyLogin };

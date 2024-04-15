@@ -9,6 +9,9 @@ const rules = document.getElementById('rules');
 const questionContainer = document.getElementById('questionContainer');
 const username = localStorage.getItem('username');
 const body = document.querySelector('body');
+let correctAnswerh = 0;
+let wrongAnswerh = 0;
+let User = localStorage.getItem('username');
 
 startButton.addEventListener('click', () => {
   startButton.classList.add('hide');
@@ -153,7 +156,7 @@ function renderMultipleChoiceQuestion(question) {
       icon: "success",
       button: "OK",
     }).then(() => {
-      window.location.href = '/leaderboard';
+      displayResult();
     });
   });
 
@@ -191,11 +194,13 @@ function handleOptionClick(selectedOption, correctAnswer) {
   }
 
   if (selectedOption === correctAnswer) {
+    correctAnswerh++;
     score += 1;
     correctSound.play();
   }
   else {
     incorrectSound.play();
+    wrongAnswerh++;
   }
 }
 
@@ -203,7 +208,7 @@ function handleOptionClick(selectedOption, correctAnswer) {
 async function postDataTrivia() {
   try {
     // Ensure that username and currentScore are defined
-    if (!username || !currentScore) {
+    if (!currentScore) {
       console.error('Error: username and currentScore are required.');
       return;
     }
@@ -213,7 +218,7 @@ async function postDataTrivia() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ playerName: username.value, score: currentScore, type: 'trivia' }),
+      body: JSON.stringify({ playerName: User, score: currentScore, type: 'trivia' }),
     });
 
     if (!response.ok) {
@@ -225,4 +230,44 @@ async function postDataTrivia() {
   } catch (error) {
     console.error('Error:', error);
   }
+}
+
+var startTime = new Date();
+
+// End time when the user completes the quiz
+var endTime = new Date();
+
+// Calculate duration in milliseconds
+var duration = endTime - startTime;
+
+// Convert duration to seconds
+var durationInSeconds = duration / 1000;
+
+console.log("User spent " + durationInSeconds + " seconds on the quiz.");
+
+function displayResult() {
+  questionContainer.style.display = 'none';
+  document.querySelector('.result-container').classList.add('active');
+  document.querySelector('.result-container').style.display = 'block';
+  const timetaken = document.getElementById('time-taken');
+  timetaken.textContent = `${duration} seconds`;
+  const totalQuestions = document.getElementById('total-questions');
+  totalQuestions.textContent = `${correctAnswerh + wrongAnswerh}/10`;
+  const correctAnswershh = document.getElementById('correct-answers');
+  correctAnswershh.textContent = `${correctAnswerh}/10`;
+  const wrongAnswershh = document.getElementById('wrong-answers');
+  wrongAnswershh.textContent = `${wrongAnswerh}/10`;
+
+  const percentage = (correctAnswerh + wrongAnswerh) / 10 * 100;
+  const correctPercentage = (correctAnswerh / 10) * 100;
+  const wrongPercentage = (wrongAnswerh / 10) * 100;
+
+  const progressbarq = document.querySelector('.progress-bar-q');
+  const progressbarc = document.querySelector('.progress-bar-c');
+  const progressbarw = document.querySelector('.progress-bar-w');
+
+  progressbarq.style.width = `${percentage}%`;
+  progressbarc.style.width = `${correctPercentage}%`;
+  progressbarw.style.width = `${wrongPercentage}%`;
+  
 }
