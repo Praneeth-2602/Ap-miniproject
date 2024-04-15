@@ -1108,10 +1108,6 @@ html,body{
   margin: 20px 0 50px 0;
 } 
 
-#signout{
-    display: none;
-}
-
 .signup-container, .login-container{
     position: absolute;
     top: 30%;
