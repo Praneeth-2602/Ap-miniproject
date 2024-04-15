@@ -7,12 +7,12 @@ const correctSound = new Audio('./audio/correct.mp3');
 const incorrectSound = new Audio('./audio/incorrect.mp3');
 const nextBtn = document.querySelector('#next-btn');
 const finishBtn = document.querySelector('#finish-btn');
-const username = document.querySelector('#username');
 const questionNumber = document.querySelector('.questionNum');
 const remTime = document.querySelector('#rem-time');
 let currentScore = 0;
 let correctAnswertoPokemon;
 let questionNum = 1;
+const User = localStorage.getItem('username');
 
 let tempStorage =[];
 function pokeFinder() {
@@ -36,7 +36,7 @@ function delayedFunction(startTime) {
             let incorrectTrigger = (correctAnswertoPokemon === 4) ? 1 : correctAnswertoPokemon+1;
             allOptions[incorrectTrigger-1].click();
             currentScore += 1;
-            const updatedScore = document.querySelector(`.${username.value}-score`);
+            const updatedScore = document.querySelector(`.${User}-score`);
             updatedScore.textContent = `${currentScore}`;
         }
         if (elapsedTimeInSeconds < 10) {
@@ -83,11 +83,11 @@ startBtn.addEventListener('click', ()=> {
     const newNameCell = document.createElement('td');
     const newScoreCell = document.createElement('td');
 
-    newNameCell.textContent = username.value;
+    newNameCell.textContent = User;
     newScoreCell.textContent = '0';
-    newRow.classList.add(`${username.value}-row`);
-    newNameCell.classList.add(`${username.value}-name`);
-    newScoreCell.classList.add(`${username.value}-score`);
+    newRow.classList.add(`${User}-row`);
+    newNameCell.classList.add(`${User}-name`);
+    newScoreCell.classList.add(`${User}-score`);
     newRow.appendChild(newNameCell);
     newRow.appendChild(newScoreCell);
     scoreTable.appendChild(newRow);
@@ -130,13 +130,13 @@ optionsParentDiv.addEventListener('click', (e)=> {
         if(clickedChoice.classList.contains('correct-option')) {
             correctSound.play();
             currentScore += 4;
-            const updatedScore = document.querySelector(`.${username.value}-score`);
+            const updatedScore = document.querySelector(`.${User}-score`);
             updatedScore.textContent = `${currentScore}`;
         }
         else {
             incorrectSound.play();
             currentScore -= 1;
-            const updatedScore = document.querySelector(`.${username.value}-score`);
+            const updatedScore = document.querySelector(`.${User}-score`);
             updatedScore.textContent = `${currentScore}`;
         }
     }
@@ -199,10 +199,10 @@ finishBtn.addEventListener('click', () => {
         window.location.href = "/leaderboard"; // Replace "https://example.com" with the URL of the webpage you want to redirect to
     });
 
-    const scoreRow = document.querySelector(`.${username.value}-row`);
-    const scoreCell = scoreRow.querySelector(`.${username.value}-score`);
+    const scoreRow = document.querySelector(`.${User}-row`);
+    const scoreCell = scoreRow.querySelector(`.${User}-score`);
     scoreCell.textContent = `${currentScore}`;
-    const updatedScore = document.querySelector(`.${username.value}-score`);
+    const updatedScore = document.querySelector(`.${User}-score`);
     updatedScore.textContent = `${currentScore}`;
     tempStorage = [];
     questionNum = 1;
@@ -213,7 +213,7 @@ finishBtn.addEventListener('click', () => {
 async function postData() {
     try {
       // Ensure that username and currentScore are defined
-      if (!username || !currentScore) {
+      if (!User || !currentScore) {
         console.error('Error: username and currentScore are required.');
         return;
       }
@@ -223,7 +223,7 @@ async function postData() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ playerName: username.value, score: currentScore, type: 'pokemon' }),
+        body: JSON.stringify({ playerName: User, score: currentScore, type: 'pokemon' }),
       });
 
       if (!response.ok) {

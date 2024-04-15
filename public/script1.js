@@ -7,7 +7,7 @@ const incorrectSound = new Audio('./audio/incorrect.mp3');
 const startButton = document.getElementById('start-btn');
 const rules = document.getElementById('rules');
 const questionContainer = document.getElementById('questionContainer');
-const username = document.getElementById('username');
+const username = localStorage.getItem('username');
 const body = document.querySelector('body');
 
 startButton.addEventListener('click', () => {

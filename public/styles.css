@@ -607,11 +607,17 @@ table{
     top: 7vh;
     left: 10vh;
     border: 1px solid white;
+    background: rgba(255, 255, 255, 0.77);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+color: #333;
 }
 
 th{
-    background-color: #120034;
-    color: white;
+    color: #333;
     padding: 10px;
     border: 1px solid white;
     border-bottom: 0;
@@ -623,18 +629,12 @@ td{
     border-bottom: 0;
 }
 
-tr:nth-child(even){
-    background-color: #120034;
-}
-
 .leadoptions{
     display: flex;
     position: relative;
     top: 10vh;
     width: 100vh;
     left: 10vh;
-    /* justify-content: center;
-    align-items: center; */
 }
 
 .leadoptions .pokeleaderboard, .leadoptions .trivialeaderboard{
@@ -650,6 +650,12 @@ tr:nth-child(even){
     padding: 20px;
     border-bottom: 0;
     border-radius: 10px;
+    background: rgba(255, 255, 255, 0.77);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .leadoptions .pokeleaderboard:hover, .leadoptions .trivialeaderboard:hover{

@@ -15,8 +15,19 @@ const scoreboardSchema = new mongoose.Schema({
   }
 });
 
+const userSchema = new mongoose.Schema({
+  username: {
+      type: String,
+      required: true,
+      unique: true
+  },
+  password: {
+      type: String,
+      required: true
+  }
+});
+
 const Scoreboard = mongoose.model('Scoreboard', scoreboardSchema);
+const User = mongoose.model('User', userSchema)
 
-// ../Models/mongoose.js
-
-export { Scoreboard };
+export { Scoreboard, User };
