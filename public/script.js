@@ -81,27 +81,39 @@ function optionGenerator(currentPokemonIndex) {
 
 const startBtn = document.querySelector('#start-btn');
 startBtn.addEventListener('click', ()=> {
-    const scoreTable = document.querySelector('#score-table');
-    const newRow = document.createElement('tr');
-    const newNameCell = document.createElement('td');
-    const newScoreCell = document.createElement('td');
+    if(localStorage.isLoggedIn == 'true') {
+        const scoreTable = document.querySelector('#score-table');
+        const newRow = document.createElement('tr');
+        const newNameCell = document.createElement('td');
+        const newScoreCell = document.createElement('td');
 
-    newNameCell.textContent = User;
-    newScoreCell.textContent = '0';
-    newRow.classList.add(`${User}-row`);
-    newNameCell.classList.add(`${User}-name`);
-    newScoreCell.classList.add(`${User}-score`);
-    newRow.appendChild(newNameCell);
-    newRow.appendChild(newScoreCell);
-    scoreTable.appendChild(newRow);
+        newNameCell.textContent = User;
+        newScoreCell.textContent = '0';
+        newRow.classList.add(`${User}-row`);
+        newNameCell.classList.add(`${User}-name`);
+        newScoreCell.classList.add(`${User}-score`);
+        newRow.appendChild(newNameCell);
+        newRow.appendChild(newScoreCell);
+        scoreTable.appendChild(newRow);
 
-    let currentPokemonIndex = pokeFinder();
-    const pokemonImg = document.querySelector('#pokemon-img').src = './images/Pokemon Dataset/' + pokemonNames[currentPokemonIndex] + '.png';
-    let correctOption = optionGenerator(currentPokemonIndex);
-    correctAnswertoPokemon = correctOption;
-    const startTime = new Date().getTime();
-    setTimeout(() => rotateTimer(startTime), 1);
-    setTimeout(() => delayedFunction(startTime), 1000);
+        let currentPokemonIndex = pokeFinder();
+        const pokemonImg = document.querySelector('#pokemon-img').src = './images/Pokemon Dataset/' + pokemonNames[currentPokemonIndex] + '.png';
+        let correctOption = optionGenerator(currentPokemonIndex);
+        correctAnswertoPokemon = correctOption;
+        const startTime = new Date().getTime();
+        setTimeout(() => rotateTimer(startTime), 1);
+        setTimeout(() => delayedFunction(startTime), 1000);
+    }
+    else {
+        swal({
+          title: "Please Login to Start the Quiz!",
+          icon: "warning",
+          button: "OK",
+        }).then(() => {
+          window.location.href = '/login';
+        }
+        );
+    }
 });
 
 const optionsParentDiv = document.querySelector('.options');

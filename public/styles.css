@@ -149,7 +149,7 @@ body{
     display: block;
     padding: 15px;
     border: none;
-    color: #fff;
+    color: #fffbf5;
     background-color: #FFFBF5;
     font-size: 20px;
     cursor: pointer;
@@ -191,7 +191,7 @@ nav li{
 
 nav li:hover{
     background-color: #FF8787;
-    color: #fff;
+    color: #fffbf5;
     border-radius: 10px;
 }
 
@@ -222,7 +222,7 @@ nav a{
 }
 
 .trivia{
-    background-image: url(./images/OIP.jpeg);
+    background-image: url(./images/OIP.png);
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -270,7 +270,7 @@ nav a{
 
 .container > div .content{
     font-size: 1.5rem;
-    color: #fff;
+    color: #fffbf5;
     display: flex;
     align-items: center;
     padding: 20px;
@@ -420,7 +420,7 @@ nav a{
 }
 
 .start button:hover{
-    color: #fff;
+    color: #fffbf5;
 }
 
 .box{
@@ -428,8 +428,8 @@ nav a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #EBE3D5;
-    color: #fff;
+    background: #FFFBF5;
+    color: #fffbf5;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 1px 3px 15px #7645d8;
@@ -477,7 +477,7 @@ nav a{
     display: block;
     height: 100%;
     width: 100%;
-    background: #fff;
+    background: #fffbf5;
     animation: progress 10s linear forwards;
 }
 
@@ -505,7 +505,7 @@ nav a{
 }
 
 #next-btn:hover, #finish-btn:hover{
-    color: #fff;
+    color: #fffbf5;
 }
 
 .btns{
@@ -522,7 +522,7 @@ nav a{
     align-items: center;
     flex-direction: column;
     background: #EBE3D5;
-    color: #fff;
+    color: #fffbf5;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 1px 3px 15px #7645d8;
@@ -535,7 +535,7 @@ nav a{
     border-collapse: collapse;
     border-spacing: 0;
     margin: 20px 0;
-    border: 1px solid #fff;
+    border: 1px solid #fffbf5;
 }
 
 .score-box table tr th{
@@ -578,7 +578,7 @@ nav a{
 .question-container .options-container button{
     padding: 15px;
     border: none;
-    color: #fff;
+    color: #fffbf5;
     background-color: #FFFBF5;
     font-size: 20px;
     cursor: pointer;
@@ -592,10 +592,14 @@ nav a{
     cursor: pointer;
 }
 
+#leaderboard{
+    height: 120vh;
+}
+
 table{
     border-collapse: collapse;
     width: 100vh;
-    color: #fff;
+    color: #fffbf5;
     font-size: 25px;
     text-align: left;
     position: relative;
@@ -604,24 +608,34 @@ table{
     border: 1px solid white;
     background: rgba(255, 255, 255, 0.77);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 20px 40px 10px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #333;
+    margin-bottom: 10vh;
 }
 
 th{
     color: #333;
     padding: 10px;
-    border: 1px solid #333;
-    border-bottom: 0;
+    border-radius: 16px; 
+    border-bottom: 1px solid #333;
+}
+
+th:nth-child(odd){
+    padding: 20px;
+    border-right: 1px solid #333;
+}
+
+td:nth-child(odd){
+    padding: 20px;
+    border-right: 1px solid #333;
 }
 
 td{
-    padding: 10px;
-    border: 1px solid #333;
-    border-bottom: 0;
+    padding: 20px;
+    
 }
 
 .leadoptions{
@@ -636,6 +650,7 @@ td{
 
 .leadoptions .pokeleaderboard, .leadoptions .trivialeaderboard{
     display: flex;
+    color: #333;
     width: 50vh;
     flex-direction: column;
     position: relative;
@@ -656,90 +671,76 @@ td{
 }
 
 .leadoptions .pokeleaderboard:hover, .leadoptions .trivialeaderboard:hover{
-    background-color: white;
-    color: #000;
+    background: #FF8787;
+    color: #fffbf5;
 }
 
-.loader{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
+.loader {
+    width: 48px;
+    height: 48px;
+    margin: auto;
     position: relative;
-    top: 50vh;
-    left: 100vh;
-}
-
-.loader .ball{
+    top: 48vh;
+  }
+  
+  .loader:before {
+    content: '';
+    width: 48px;
+    height: 5px;
+    background: #f0808050;
     position: absolute;
-    height: 25px;
-    width: 25px;
-    background: blue;
+    top: 60px;
+    left: 0;
     border-radius: 50%;
-}
-
-.loader .upper{
-    left: 0;
-    top: -30px;
-    background: #2da2ff;
-    animation: upper 1.5s infinite;
-}
-
-@keyframes upper{
-    50% {
-        top: 30px;
-    }
-
-}
-
-.loader .right{
-    left: 30px;
-    top: 0;
-    background: #ff337a;
-    animation: right 1.5s infinite;
-}
-
-@keyframes right {
-    50% {
-        left: -30px;
-    }
-}
-
-.loader{
-    height: 100vh;
+    animation: shadow324 0.5s linear infinite;
+  }
+  
+  .loader:after {
+    content: '';
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-}
-
-.loader .lower{
-    left: 0;
-    top: 30px;
-    background: #ffff00;
-    animation: lower 1.5s infinite;
-}
-
-@keyframes lower {
-    50% {
-        top: -30px;
-    }
-
-}
-
-.loader .left{
-    left: -30px;
+    height: 100%;
+    background: #f08080;
+    position: absolute;
     top: 0;
-    background: #00ff00;
-    animation: left 1.5s infinite;
-}
-
-@keyframes left {
-    50% {
-        left: 30px;
+    left: 0;
+    border-radius: 4px;
+    animation: jump7456 0.5s linear infinite;
+  }
+  
+  @keyframes jump7456 {
+    15% {
+      border-bottom-right-radius: 3px;
     }
-}
+  
+    25% {
+      transform: translateY(9px) rotate(22.5deg);
+    }
+  
+    50% {
+      transform: translateY(18px) scale(1, .9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+    }
+  
+    75% {
+      transform: translateY(9px) rotate(67.5deg);
+    }
+  
+    100% {
+      transform: translateY(0) rotate(90deg);
+    }
+  }
+  
+  @keyframes shadow324 {
+  
+    0%,
+      100% {
+      transform: scale(1, 1);
+    }
+  
+    50% {
+      transform: scale(1.2, 1);
+    }
+  }
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
@@ -763,7 +764,7 @@ body {
   left: 0;
   font-size: 96px;
   font-weight: 800;
-  color: #fff;
+  color: #fffbf5;
   opacity: 0.8;
   user-select: none;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
@@ -979,7 +980,7 @@ html,body{
 
 }*/
 .login-container{
-    background: #fff;
+    background: #fffbf5;
     max-width: 350px;
     width: 100%;
     padding: 25px 30px;
@@ -1057,7 +1058,7 @@ html,body{
 .login-container .input-box input[type="submit"]{
     background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
     font-size: 17px;
-    color: #fff;
+    color: #fffbf5;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1081,7 +1082,7 @@ html,body{
   text-decoration: none;
   padding-left: 20px;
   line-height: 45px;
-  color: #fff;
+  color: #fffbf5;
   border-radius: 5px;
   transition: all 0.3s ease;
 }
@@ -1122,7 +1123,7 @@ h1 {
     display: none;
     max-width: 500px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #fffbf5;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1184,8 +1185,29 @@ h1 {
     font-weight: bold;
 }
 
-
-
 .active{
     display: block;
+}
+
+button{
+    padding-left: 33px;
+ padding-right: 33px;
+ padding-bottom: 16px;
+ padding-top: 16px;
+ border-radius: 9px;
+ background: #d5f365;
+ border: none;
+ font-family: inherit;
+ text-align: center;
+ cursor: pointer;
+ transition: 0.4s;
+}
+
+button:hover{
+    box-shadow: 7px 5px 56px -14px #C3D900;
+}
+
+button:active{
+    transform: scale(0.97);
+    box-shadow: 7px 5px 56px -10px #C3D900;
 }

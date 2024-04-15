@@ -10,6 +10,8 @@ function validateForm() {
     return true;
 }
 
+let isSignedUp = false;
+
 async function sendCredentials(username, password) {
     try {
       // Ensure that username and currentScore are defined
@@ -32,8 +34,23 @@ async function sendCredentials(username, password) {
   
       const data = await response.json();
       console.log(data);
+      if(data.success){
+        console.log('User created successfully');
+        isSignedUp = true;
+      }
     } catch (error) {
       console.error('Error:', error);
+    }
+
+    if(isSignedUp){
+      swal({
+        title: "Signup Successful! Please login to continue.",
+        icon: "success",
+        button: "OK",
+      }).then(() => {
+        window.location.href = '/login';
+      }
+      );
     }
   }
 
@@ -66,16 +83,23 @@ async function verifyLoginCredentials(username, password){
     if(isLoggedIn){
       localStorage.setItem('username', username);
       localStorage.setItem('isLoggedIn', true);
-      window.location.href = '/';
+      swal({
+        title: "Login Successful!",
+        icon: "success",
+        button: "OK",
+      }).then(() => {
+        window.location.href = '/';
+      }
+      );
     }
 }
 
 async function handleSignup(event) {
   event.preventDefault(); // Prevent form submission
   
-  const username = document.getElementById('name').value;
+  const username = document.getElementById('username').value;
   const email = document.getElementById('email').value;
-  const password = document.getElementById('passkey').value;
+  const password = document.getElementById('password').value;
 
   if (!username || !email || !password) {
     console.error('Error: username, email, and password are required.');

@@ -14,34 +14,40 @@ let wrongAnswerh = 0;
 let User = localStorage.getItem('username');
 
 startButton.addEventListener('click', () => {
-  startButton.classList.add('hide');
-  rules.classList.remove('active');
-  rules.style.display = 'none';
-  questionContainer.classList.add('active');
-  questionContainer.style.display = 'none';
-  // Display loading animation
-  const loadingAnimation = document.createElement('div');
-  loadingAnimation.innerHTML = `
-    <div class="loader">
-      <div class="upper ball"></div>
-      <div class="right ball"></div>
-      <div class="lower ball"></div>
-      <div class="left ball"></div>
-    </div>
-  `;
-  body.appendChild(loadingAnimation);
-  
-  // Fetch questions and render them
-  fetchQuestionsBatch()
-    .then(() => {
-      body.removeChild(loadingAnimation);
-      questionContainer.style.display = 'flex';
-      renderMultipleChoiceQuestion(questions[questionIndex]);
-    })
-    .catch(error => {
-      body.removeChild(loadingAnimation);
-      console.error('Error fetching questions:', error);
-    });
+  if(localStorage.isLoggedIn == 'true') {
+    startButton.classList.add('hide');
+    rules.classList.remove('active');
+    rules.style.display = 'none';
+    questionContainer.classList.add('active');
+    questionContainer.style.display = 'none';
+    // Display loading animation
+    const loadingAnimation = document.createElement('div');
+    loadingAnimation.innerHTML = `
+      <div class="loader"></div>
+    `;
+    body.appendChild(loadingAnimation);
+    
+    // Fetch questions and render them
+    fetchQuestionsBatch()
+      .then(() => {
+        body.removeChild(loadingAnimation);
+        questionContainer.style.display = 'flex';
+        renderMultipleChoiceQuestion(questions[questionIndex]);
+      })
+      .catch(error => {
+        body.removeChild(loadingAnimation);
+        console.error('Error fetching questions:', error);
+      });
+    } else {
+      swal({
+        title: "Please Login to Start the Quiz!",
+        icon: "warning",
+        button: "OK",
+      }).then(() => {
+        window.location.href = '/login';
+      }
+      );
+    }
 });
 
 
