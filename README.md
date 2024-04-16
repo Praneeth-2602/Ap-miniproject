@@ -45,5 +45,5 @@ node index.js
 Follow the on-screen instructions to choose between the Pokemon Quiz and Trivia Quiz modes and answer the questions.
 
 Additional Information
-For additional information or support, contact 
+For additional information or support, contact praneethpalugula@gmail.com or dhruvakodiadka@gmail.com
 
