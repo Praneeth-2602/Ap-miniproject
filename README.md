@@ -33,12 +33,12 @@ cd Ap-miniproject
 ```
 
 # Install any necessary dependencies
-```
+```bash
 npm install
 ```
 
 # Start the game
-```
+```bash
 node index.js
 ```
 
