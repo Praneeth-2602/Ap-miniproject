@@ -24,21 +24,26 @@ The Pokemon and Trivia Quiz Game is designed to entertain users by challenging t
 
 To run this project locally, follow these steps:
 
-```bash
+bash
 # Clone the repository to your local machine
-git clone https://github.com/your-username/pokemon-trivia-quiz.git
 
 # Navigate to the project directory
-cd pokemon-trivia-quiz
+```bash
+cd Ap-miniproject
+```
 
 # Install any necessary dependencies
+```
 npm install
+```
 
 # Start the game
+```
 node index.js
+```
+
 Follow the on-screen instructions to choose between the Pokemon Quiz and Trivia Quiz modes and answer the questions.
 
 Additional Information
-For additional information or support, contact your-email@example.com
+For additional information or support, contact 
 
-Now, users can copy the entire block and execute the commands directly. Let me know if there's anything else you need!
