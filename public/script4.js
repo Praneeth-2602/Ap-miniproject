@@ -3,7 +3,12 @@ function validateForm() {
     const password = document.getElementById('password').value;
 
     if (!username || !password) {
-        console.error('Error: username and password are required.');
+        alert('Error: username and password are required.');
+        return false;
+    }
+
+    if (password.length < 8) {
+        alert('Error: Password must contain at least eight characters!');
         return false;
     }
 
@@ -44,7 +49,7 @@ async function sendCredentials(username, password) {
 
     if(isSignedUp){
       swal({
-        title: "Signup Successful! Please login to continue.",
+        title: "Sign Up Successful! Please login to continue",
         icon: "success",
         button: "OK",
       }).then(() => {

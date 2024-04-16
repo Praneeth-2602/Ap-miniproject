@@ -201,7 +201,7 @@ startBtn.addEventListener('click', () => {
 remTime.style.display = 'none';
 
 finishBtn.addEventListener('click', () => {
-    
+
     // gameDiv.classList.remove('active');
     // scoreTable.classList.add('active');
     questionNumber.textContent = '1.';
@@ -251,27 +251,13 @@ async function postData() {
       console.error('Error:', error);
     }
   }
-  
 
-  // Start time when the user begins the quiz
-var startTime = new Date();
-
-// End time when the user completes the quiz
-var endTime = new Date();
-
-// Calculate duration in milliseconds
-var duration = endTime - startTime;
-
-// Convert duration to seconds
-var durationInSeconds = duration / 1000;
-
-console.log("User spent " + durationInSeconds + " seconds on the quiz.");
 
 function displayResult() {
     gameDiv.classList.remove('active');
     document.querySelector('.result-container').classList.add('active');
-    const timetaken = document.getElementById('time-taken');
-    timetaken.textContent = `${duration} seconds`;
+    const yourscore = document.getElementById('your-score');
+    yourscore.textContent = `${currentScore}`;
     const totalQuestions = document.getElementById('total-questions');
     totalQuestions.textContent = `${questionNum}`;
     const correctAnswershh = document.getElementById('correct-answers');
