@@ -20,7 +20,7 @@ The Pokemon and Trivia Quiz Game is designed to entertain users by challenging t
 - Interactive gameplay with immediate feedback on correct or incorrect answers.
 - Keep track of your score to see how well you perform.
 
-## Installation and  ##Usage
+## Installation and  Usage
 
 To run this project locally, follow these steps:
 
