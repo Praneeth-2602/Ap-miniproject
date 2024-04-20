@@ -5,12 +5,12 @@ if (localStorage.isLoggedIn == 'true') {
     document.getElementById('signup').style.display = 'none';
     
     // Show signout button
-    document.getElementById('signout').style.display = 'contents';
+    document.getElementById('signout').style.display = 'inline';
 }
 else if (localStorage.isLoggedIn == 'false'){
     // Show the login and signup buttons
-    document.getElementById('login').style.display = 'contents';
-    document.getElementById('signup').style.display = 'contents';
+    document.getElementById('login').style.display = 'inline';
+    document.getElementById('signup').style.display = 'inline';
     
     // Hide the signout button
     document.getElementById('signout').style.display = 'none';
