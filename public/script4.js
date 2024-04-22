@@ -18,9 +18,9 @@ function validateForm() {
 let isSignedUp = false;
 
 async function sendCredentials(username, password) {
-    try {
-      // Ensure that username and currentScore are defined
-      if (!username || !password) {
+  try {
+    // Ensure that username and currentScore are defined
+    if (!username || !password) {
         console.error('Error: username and password are required.');
         return;
       }
@@ -40,9 +40,16 @@ async function sendCredentials(username, password) {
       const data = await response.json();
       console.log(data);
       if(data.success){
-        console.log('User created successfully');
-        isSignedUp = true;
-      }
+      console.log('User created successfully');
+      isSignedUp = true;
+    } else {
+      swal({
+        title: "User already exists or Invalid Credentials",
+        icon: "warning",
+        button: "OK",
+      });
+      return;
+    }
     } catch (error) {
       console.error('Error:', error);
     }
@@ -80,6 +87,11 @@ async function verifyLoginCredentials(username, password){
             console.log('Login successful');
         }else{
             console.log('Incorrect username or password');
+          swal({
+            title: "Incorrect username or password",
+            icon: "warning",
+            button: "OK",
+          });
         }
     } catch (error) {
         console.error('Error:', error);
